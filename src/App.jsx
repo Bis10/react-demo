@@ -3,14 +3,17 @@
 // import viteLogo from '/vite.svg'
 import './App.css'
 import Box from './Box'
+import Header from './Header'
+import Footer from './Footer'
 import { useState } from 'react'
+import Counter from './Counter'
 
 function App() {
 const [counter, setCounter] = useState(0)
 const [persons, setPersons] = useState ([
   {id:1, name : "Bishnu", title: "CTO", location: "Helsinki"},
-  {id:2, name : "Ram", title: "Designer" ,location :"Kathmandu"},
-  {id:3, name :"Shyam", title: "Developer", location:"Sau Paulo"},
+  {id:2, name : "David", title: "Designer" ,location :"Kathmandu"},
+  {id:3, name :"James", title: "Developer", location:"Sao Paulo"},
 ]);
 
 const clickHandlerAdd = () =>{
@@ -25,10 +28,13 @@ const clickHandlerSub = () =>{
 
   return (
     <>
+     <Header/>
+     <Counter counter = {counter}/>
     <p>Counter: {counter}</p>
     <button onClick = {clickHandlerAdd}>Add me </button>
     <p><button onClick = {clickHandlerSub}>Subtract me</button></p>
     <p><button onClick = {clickHandlerReset}>Reset me</button></p>
+   
 
     {persons.map((person) => (
       <Box 
@@ -39,6 +45,7 @@ const clickHandlerSub = () =>{
       location ={person.location}
       />
     ))}
+    <Footer/>
     </>
    );
   }
