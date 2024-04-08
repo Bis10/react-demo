@@ -7,6 +7,8 @@ import Header from './Header'
 import Footer from './Footer'
 import { useState } from 'react'
 import Counter from './Counter'
+import Form from './Form'
+import View from './View'
 
 function App() {
 const [counter, setCounter] = useState(0)
@@ -15,6 +17,11 @@ const [persons, setPersons] = useState ([
   {id:2, name : "David", title: "Designer" ,location :"Kathmandu"},
   {id:3, name :"James", title: "Developer", location:"Sao Paulo"},
 ]);
+const [inputValue, setInputValue] = useState('')
+
+const changeHandler = (event)=>{
+  setInputValue(event.target.value);
+}
 
 const clickHandlerAdd = () =>{
  setCounter(counter + 1);
@@ -29,7 +36,9 @@ const clickHandlerSub = () =>{
   return (
     <>
      <Header/>
-     <Counter 
+     <Form changeHandler = {changeHandler}/>
+     <View inputValue = {inputValue}/>
+     {/* <Counter 
      counterP = {counter} 
      clickHandlerAdd = {clickHandlerAdd}
      clickHandlerSub = {clickHandlerSub}
@@ -42,11 +51,11 @@ const clickHandlerSub = () =>{
       title ={person.title}
       location ={person.location}
       />
-    ))}
-    <Footer/>
+    ))} */}
+    <Footer/> 
     </>
    );
-  }
+  };
      
 
 
