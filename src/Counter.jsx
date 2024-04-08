@@ -1,13 +1,14 @@
 const Counter = (props) => {
     return ( 
         <div>
-<p>Counter: {props.counter}</p>
-    {/* <button onClick = {clickHandlerAdd}>Add me </button>
-    <p><button onClick = {clickHandlerSub}>Subtract me</button></p>
-    <p><button onClick = {clickHandlerReset}>Reset me</button></p> */}
+<p>Counter: {props.counterP}</p>
+    <button onClick = {props.clickHandlerAdd}>Add me </button>
+    <button onClick = {props.clickHandlerSub}>Subtract me</button>
+    <button onClick = {props.clickHandlerReset}>Reset me</button>
 
         </div>
      );
 };
+
  
 export default Counter;

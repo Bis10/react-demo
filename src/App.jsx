@@ -29,16 +29,14 @@ const clickHandlerSub = () =>{
   return (
     <>
      <Header/>
-     <Counter counter = {counter}/>
-    <p>Counter: {counter}</p>
-    <button onClick = {clickHandlerAdd}>Add me </button>
-    <p><button onClick = {clickHandlerSub}>Subtract me</button></p>
-    <p><button onClick = {clickHandlerReset}>Reset me</button></p>
-   
-
+     <Counter 
+     counterP = {counter} 
+     clickHandlerAdd = {clickHandlerAdd}
+     clickHandlerSub = {clickHandlerSub}
+     clickHandlerReset = {clickHandlerReset}
+     />
     {persons.map((person) => (
       <Box 
-
       key={person.id}
       name ={person.name}
       title ={person.title}
