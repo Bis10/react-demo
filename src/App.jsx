@@ -7,9 +7,14 @@ import Header from './Header.jsx';
 import Footer from './Footer.jsx';
 import Form from './Form.jsx';
 import View from './View.jsx';
+import Dashboard from './Dashboard.jsx';
 
 function App() {
+  const[isLoggedIn, SetIsLoggedIn]=useState(false);
 
+  const displayHandler = () =>{
+    SetIsLoggedIn(!isLoggedIn);
+  };
 // const [counter, setCounter] = useState(0)
 // const [persons, setPersons] = useState ([
 //   {id:1, name : "Bishnu", title: "CTO", location: "Helsinki"},
@@ -18,6 +23,7 @@ function App() {
 // ]);
 // const [inputValue, setInputValue] = useState('')
 const [formData, setFormData] = useState({});
+
 
 // const changeHandler= (event)=>{
 //   setInputValue(event.target.value);
@@ -44,8 +50,11 @@ const changeFormHandler = (event)=>{
   return (
     <>
      <Header/>
-     <Form changeFormHandler = {changeFormHandler}/>
-     <View {...formData}/>
+     <button onClick={displayHandler}>Click Me</button>
+     {isLoggedIn &&  <Dashboard user ="Bishnu"/>} 
+     {/* The above data cames from dashboard component. */}
+     {/* <Form changeFormHandler = {changeFormHandler}/>
+     <View {...formData}/> */}
      {/* <Counter 
      counterP = {counter} 
      clickHandlerAdd = {clickHandlerAdd}
