@@ -2,78 +2,38 @@
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 import './App.css';
-import { useState } from 'react';
-import Header from './Header.jsx';
-import Footer from './Footer.jsx';
-import Form from './Form.jsx';
+import { Children, useState } from 'react';
+import Header from './components/Header.jsx';
+import Footer from './components/Footer.jsx';
+import Form from './components/Form.jsx';
 import View from './View.jsx';
-import Dashboard from './Dashboard.jsx';
+import Dashboard from './pages/Dashboard.jsx';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import Root from './Root.jsx';
+import Home from './pages/Home.jsx';
+import About from './pages/About.jsx';
+import Person from './pages/Person.jsx';
 
 function App() {
-  const[isLoggedIn, SetIsLoggedIn]=useState(false);
+  const router = createBrowserRouter([
+    
+    { 
+      path: '/',
+     element: <Root />,
+     children:[
+      { path: '/', element: <Home />},
+      { path: '/about', element: <About/>},
+      { path: '/person', element: <Person/>},
 
-  const displayHandler = () =>{
-    SetIsLoggedIn(!isLoggedIn);
-  };
-// const [counter, setCounter] = useState(0)
-// const [persons, setPersons] = useState ([
-//   {id:1, name : "Bishnu", title: "CTO", location: "Helsinki"},
-//   {id:2, name : "David", title: "Designer" ,location :"Kathmandu"},
-//   {id:3, name :"James", title: "Developer", location:"Sao Paulo"},
-// ]);
-// const [inputValue, setInputValue] = useState('')
-const [formData, setFormData] = useState({});
+     ],
+    },
+    
+  ]);
 
-
-// const changeHandler= (event)=>{
-//   setInputValue(event.target.value);
-// };
-const changeFormHandler = (event)=>{
-  const{name, value} = event.target;
-  
-    setFormData((prevState)=>({...prevState,[name]: value}));
-    console.log(formData);
-
-};
+  return <RouterProvider router={router} />;
 
 
-// const clickHandlerAdd = () =>{
-//  setCounter(counter + 1);
-// };
-// const clickHandlerSub = () =>{
-//   setCounter(counter - 1);
-//  };
-//  const clickHandlerReset = () =>{
-//   setCounter(0);
-//  };
-
-  return (
-    <>
-     <Header/>
-     <button onClick={displayHandler}>Click Me</button>
-     {isLoggedIn &&  <Dashboard user ="Bishnu"/>} 
-     {/* The above data cames from dashboard component. */}
-     {/* <Form changeFormHandler = {changeFormHandler}/>
-     <View {...formData}/> */}
-     {/* <Counter 
-     counterP = {counter} 
-     clickHandlerAdd = {clickHandlerAdd}
-     clickHandlerSub = {clickHandlerSub}
-     clickHandlerReset = {clickHandlerReset}
-     />
-    {persons.map((person) => (
-      <Box 
-      key={person.id}
-      name ={person.name}
-      title ={person.title}
-      location ={person.location}
-      />
-    ))} */}
-    <Footer/> 
-    </>
-   );
-  };
-     
+}
 
 
-export default App
+export default App;
